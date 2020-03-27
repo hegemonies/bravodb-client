@@ -8,8 +8,10 @@ object CommandLineRunner {
 
     private val help = """
         How to use command line runner:
-        put     put <key> <value>
-        get <key>
+        [put | p] <key> <value>    Put data with <key> <value> in database
+        [get | g] <key>            Get and show data from database by key
+        [quit | q]                 Quit from program
+        [help | h]                 Print help
     """.trimIndent()
 
     fun run() {
@@ -29,14 +31,14 @@ object CommandLineRunner {
             }
             val command = strings[0]
             return when (command) {
-                "get" -> {
+                "get", "g" -> {
                     val key = strings[1]
                     ClientFacade.getData(key)?.also { data ->
                         println(":> ${data.key} ${data.value}")
                     } ?: println(":> records with key $key not found")
                     true
                 }
-                "put" -> {
+                "put", "p" -> {
                     if (strings.count() < 3) {
                         printHelp()
                         return@let false
@@ -50,11 +52,11 @@ object CommandLineRunner {
                     }
                     true
                 }
-                "quit" -> {
+                "quit", "q" -> {
                     println("Bye")
                     false
                 }
-                "help" -> {
+                "help", "h" -> {
                     printHelp()
                     true
                 }
@@ -63,6 +65,6 @@ object CommandLineRunner {
                     true
                 }
             }
-        } ?: true.also { printHelp() }
+        } ?: true // .also { printHelp() }
     }
 }
