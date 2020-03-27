@@ -68,6 +68,6 @@ jib {
         creationTime = "USE_CURRENT_TIMESTAMP"
     }
     to {
-        image = "bravo/bravodb:${version}"
+        image = "bravo/bravodb-client:${version}"
     }
 }

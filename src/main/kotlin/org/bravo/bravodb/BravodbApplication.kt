@@ -4,6 +4,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.apache.logging.log4j.LogManager
+import org.bravo.bravodb.commandlineclient.CommandLineRunner
 import org.bravo.bravodb.server.Discovery
 import org.bravo.bravodb.server.properties.BravoDBProperties
 import org.bravo.bravodb.server.server.config.ServerDiscoveryConfig
@@ -13,13 +14,14 @@ import kotlin.system.measureTimeMillis
 private val logger = LogManager.getLogger()
 
 fun main() {
-    try {
-        initializeDiscovery()
-    } catch (e: Exception) {
-        logger.error("Error from main: ${e.message}")
-    } catch (thr: Throwable) {
-        logger.error("Error from main: ${thr.message}")
-    }
+    // try {
+    //     initializeDiscovery()
+    // } catch (e: Exception) {
+    //     logger.error("Error from main: ${e.message}")
+    // } catch (thr: Throwable) {
+    //     logger.error("Error from main: ${thr.message}")
+    // }
+    CommandLineRunner.run()
 }
 
 fun initializeDiscovery() {
