@@ -1,0 +1,530 @@
+23:45:06.065 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.BravodbApplicationKt Setup discovery properties: BravoDBProperties(selfServerHost=192.168.0.107, selfServerPort=8919, otherServerHost=192.168.0.108, otherServerPort=8919)
+23:45:06.073 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Discovery start
+23:45:06.073 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Start bootstrap server
+23:45:06.074 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.server.Server Bootstrap discovery server start on port 8919
+23:45:06.102 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.logging.InternalLoggerFactory Using SLF4J as the default logging framework
+23:45:06.109 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.InternalThreadLocalMap -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+23:45:06.109 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.InternalThreadLocalMap -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+23:45:06.121 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent Platform: Windows
+23:45:06.124 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent0 -Dio.netty.noUnsafe: false
+23:45:06.124 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent0 Java version: 11
+23:45:06.126 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent0 sun.misc.Unsafe.theUnsafe: available
+23:45:06.126 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent0 sun.misc.Unsafe.copyMemory: available
+23:45:06.127 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent0 java.nio.Buffer.address: available
+23:45:06.127 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent0 direct buffer constructor: unavailable
+java.lang.UnsupportedOperationException: Reflective setAccessible(true) disabled
+	at io.netty.util.internal.ReflectionUtil.trySetAccessible(ReflectionUtil.java:31) ~[netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.util.internal.PlatformDependent0$4.run(PlatformDependent0.java:224) ~[netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at java.security.AccessController.doPrivileged(Native Method) ~[?:?]
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:218) [netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272) [netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92) [netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.buffer.ByteBufUtil.<clinit>(ByteBufUtil.java:76) [netty-buffer-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.buffer.ByteBufAllocator.<clinit>(ByteBufAllocator.java:24) [netty-buffer-4.1.39.Final.jar:4.1.39.Final]
+	at io.rsocket.RSocketFactory$ServerRSocketFactory.<init>(RSocketFactory.java:449) [rsocket-core-1.0.0-RC6.jar:?]
+	at io.rsocket.RSocketFactory$ServerRSocketFactory.<init>(RSocketFactory.java:430) [rsocket-core-1.0.0-RC6.jar:?]
+	at io.rsocket.RSocketFactory.receive(RSocketFactory.java:69) [rsocket-core-1.0.0-RC6.jar:?]
+	at org.bravo.bravodb.server.server.transport.rsocket.RSocketServerDiscovery.start(RSocketServerDiscovery.kt:21) [main/:?]
+	at org.bravo.bravodb.server.server.Server.bootstrap(Server.kt:26) [main/:?]
+	at org.bravo.bravodb.server.server.Server.start(Server.kt:21) [main/:?]
+	at org.bravo.bravodb.server.Discovery.bootstrapServer(Discovery.kt:125) [main/:?]
+	at org.bravo.bravodb.server.Discovery$start$1.invokeSuspend(Discovery.kt:49) [main/:?]
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33) [kotlin-stdlib-1.3.71.jar:1.3.71-release-431 (1.3.71)]
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:56) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:271) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:79) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:54) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:36) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at org.bravo.bravodb.server.Discovery.start(Discovery.kt:35) [main/:?]
+	at org.bravo.bravodb.BravodbApplicationKt.initializeDiscovery(BravodbApplication.kt:59) [main/:?]
+	at org.bravo.bravodb.BravodbApplicationKt$main$1.invokeSuspend(BravodbApplication.kt:19) [main/:?]
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33) [kotlin-stdlib-1.3.71.jar:1.3.71-release-431 (1.3.71)]
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:56) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:561) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:727) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:667) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:655) [kotlinx-coroutines-core-1.3.3.jar:?]
+23:45:06.140 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent0 java.nio.Bits.unaligned: available, true
+23:45:06.142 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent0 jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable
+java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent0$6 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module @1367c845
+	at jdk.internal.reflect.Reflection.newIllegalAccessException(Reflection.java:361) ~[?:?]
+	at java.lang.reflect.AccessibleObject.checkAccess(AccessibleObject.java:591) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:558) ~[?:?]
+	at io.netty.util.internal.PlatformDependent0$6.run(PlatformDependent0.java:334) ~[netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at java.security.AccessController.doPrivileged(Native Method) ~[?:?]
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:325) [netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272) [netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92) [netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.buffer.ByteBufUtil.<clinit>(ByteBufUtil.java:76) [netty-buffer-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.buffer.ByteBufAllocator.<clinit>(ByteBufAllocator.java:24) [netty-buffer-4.1.39.Final.jar:4.1.39.Final]
+	at io.rsocket.RSocketFactory$ServerRSocketFactory.<init>(RSocketFactory.java:449) [rsocket-core-1.0.0-RC6.jar:?]
+	at io.rsocket.RSocketFactory$ServerRSocketFactory.<init>(RSocketFactory.java:430) [rsocket-core-1.0.0-RC6.jar:?]
+	at io.rsocket.RSocketFactory.receive(RSocketFactory.java:69) [rsocket-core-1.0.0-RC6.jar:?]
+	at org.bravo.bravodb.server.server.transport.rsocket.RSocketServerDiscovery.start(RSocketServerDiscovery.kt:21) [main/:?]
+	at org.bravo.bravodb.server.server.Server.bootstrap(Server.kt:26) [main/:?]
+	at org.bravo.bravodb.server.server.Server.start(Server.kt:21) [main/:?]
+	at org.bravo.bravodb.server.Discovery.bootstrapServer(Discovery.kt:125) [main/:?]
+	at org.bravo.bravodb.server.Discovery$start$1.invokeSuspend(Discovery.kt:49) [main/:?]
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33) [kotlin-stdlib-1.3.71.jar:1.3.71-release-431 (1.3.71)]
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:56) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:271) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:79) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:54) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:36) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at org.bravo.bravodb.server.Discovery.start(Discovery.kt:35) [main/:?]
+	at org.bravo.bravodb.BravodbApplicationKt.initializeDiscovery(BravodbApplication.kt:59) [main/:?]
+	at org.bravo.bravodb.BravodbApplicationKt$main$1.invokeSuspend(BravodbApplication.kt:19) [main/:?]
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33) [kotlin-stdlib-1.3.71.jar:1.3.71-release-431 (1.3.71)]
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:56) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:561) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:727) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:667) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:655) [kotlinx-coroutines-core-1.3.3.jar:?]
+23:45:06.143 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent0 java.nio.DirectByteBuffer.<init>(long, int): unavailable
+23:45:06.143 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent sun.misc.Unsafe: available
+23:45:06.144 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent maxDirectMemory: 6431965184 bytes (maybe)
+23:45:06.144 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent -Dio.netty.tmpdir: C:\Users\dadan\AppData\Local\Temp (java.io.tmpdir)
+23:45:06.144 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent -Dio.netty.bitMode: 64 (sun.arch.data.model)
+23:45:06.145 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent -Dio.netty.maxDirectMemory: -1 bytes
+23:45:06.145 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent -Dio.netty.uninitializedArrayAllocationThreshold: -1
+23:45:06.147 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.CleanerJava9 java.nio.ByteBuffer.cleaner(): available
+23:45:06.147 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent -Dio.netty.noPreferDirect: false
+23:45:06.157 [DefaultDispatcher-worker-1] DEBUG io.netty.util.ResourceLeakDetector -Dio.netty.leakDetection.level: simple
+23:45:06.157 [DefaultDispatcher-worker-1] DEBUG io.netty.util.ResourceLeakDetector -Dio.netty.leakDetection.targetRecords: 4
+23:45:06.161 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.numHeapArenas: 16
+23:45:06.161 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.numDirectArenas: 16
+23:45:06.161 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.pageSize: 8192
+23:45:06.161 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.maxOrder: 11
+23:45:06.161 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.chunkSize: 16777216
+23:45:06.161 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.tinyCacheSize: 512
+23:45:06.161 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.smallCacheSize: 256
+23:45:06.161 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.normalCacheSize: 64
+23:45:06.161 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+23:45:06.161 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.cacheTrimInterval: 8192
+23:45:06.161 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+23:45:06.161 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.useCacheForAllThreads: true
+23:45:06.161 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+23:45:06.175 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.ByteBufUtil -Dio.netty.allocator.type: pooled
+23:45:06.175 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.ByteBufUtil -Dio.netty.threadLocalDirectBufferSize: 0
+23:45:06.175 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.ByteBufUtil -Dio.netty.maxThreadLocalCharBufferSize: 16384
+23:45:06.191 [DefaultDispatcher-worker-1] DEBUG reactor.util.Loggers$LoggerFactory Using Slf4j logging framework
+23:45:06.259 [DefaultDispatcher-worker-1] DEBUG io.netty.util.NetUtil -Djava.net.preferIPv4Stack: false
+23:45:06.259 [DefaultDispatcher-worker-1] DEBUG io.netty.util.NetUtil -Djava.net.preferIPv6Addresses: false
+23:45:06.432 [DefaultDispatcher-worker-1] DEBUG io.netty.util.NetUtil Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+23:45:06.432 [DefaultDispatcher-worker-1] DEBUG io.netty.util.NetUtil Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+23:45:06.447 [DefaultDispatcher-worker-1] DEBUG reactor.netty.tcp.TcpResources [tcp] resources will use the default LoopResources: DefaultLoopResources {prefix=reactor-tcp, daemon=true, selectCount=8, workerCount=8}
+23:45:06.447 [DefaultDispatcher-worker-1] DEBUG reactor.netty.tcp.TcpResources [tcp] resources will use the default ConnectionProvider: PooledConnectionProvider {name=tcp, poolFactory=reactor.netty.resources.ConnectionProvider$$Lambda$126/0x0000000800299040@60dd8dd1}
+23:45:06.450 [DefaultDispatcher-worker-1] DEBUG reactor.netty.resources.DefaultLoopEpoll Default Epoll support : false
+23:45:06.451 [DefaultDispatcher-worker-1] DEBUG reactor.netty.resources.DefaultLoopKQueue Default KQueue support : false
+23:45:06.454 [DefaultDispatcher-worker-1] DEBUG io.netty.channel.MultithreadEventLoopGroup -Dio.netty.eventLoopThreads: 16
+23:45:06.471 [DefaultDispatcher-worker-1] DEBUG io.netty.channel.nio.NioEventLoop -Dio.netty.noKeySetOptimization: false
+23:45:06.471 [DefaultDispatcher-worker-1] DEBUG io.netty.channel.nio.NioEventLoop -Dio.netty.selectorAutoRebuildThreshold: 512
+23:45:06.478 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent org.jctools-core.MpscChunkedArrayQueue: available
+23:45:06.489 [DefaultDispatcher-worker-1] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@5993ec82
+23:45:06.491 [DefaultDispatcher-worker-1] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@f856c65
+23:45:06.491 [DefaultDispatcher-worker-1] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@6006c061
+23:45:06.492 [DefaultDispatcher-worker-1] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@5720c2ea
+23:45:06.492 [DefaultDispatcher-worker-1] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@2ed8caaa
+23:45:06.493 [DefaultDispatcher-worker-1] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@a9a6d50
+23:45:06.494 [DefaultDispatcher-worker-1] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@5c49b1aa
+23:45:06.494 [DefaultDispatcher-worker-1] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@d2f1f5b
+23:45:06.512 [DefaultDispatcher-worker-1] DEBUG io.netty.channel.DefaultChannelId -Dio.netty.processId: 18424 (auto-detected)
+23:45:06.698 [DefaultDispatcher-worker-1] DEBUG io.netty.channel.DefaultChannelId -Dio.netty.machineId: 40:8d:5c:ff:fe:eb:3e:fc (auto-detected)
+23:45:06.727 [reactor-tcp-nio-1] DEBUG reactor.netty.tcp.TcpServer [id: 0x0f2ab9a6, L:/0:0:0:0:0:0:0:0:8919] Bound new server
+23:45:06.782 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Finish bootstrap server
+23:45:06.784 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.client.transport.rsocket.RSocketClient Start connect to 192.168.0.108:8919
+23:45:06.803 [DefaultDispatcher-worker-1] DEBUG reactor.netty.resources.PooledConnectionProvider Creating new client pool [tcp] for /192.168.0.108:8919
+23:45:06.821 [reactor-tcp-nio-2] DEBUG reactor.netty.resources.PooledConnectionProvider [id: 0xc7c3cb90] Created new pooled channel, now 1 active connections and 0 inactive connections
+23:45:06.827 [reactor-tcp-nio-2] DEBUG reactor.netty.channel.BootstrapHandlers [id: 0xc7c3cb90] Initialized pipeline DefaultChannelPipeline{(BootstrapHandlers$BootstrapInitializerHandler#0 = reactor.netty.channel.BootstrapHandlers$BootstrapInitializerHandler), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+23:45:08.888 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Cannot connect to 192.168.0.108:8919: Connection refused: no further information: /192.168.0.108:8919
+23:45:08.888 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Error init RSocketClient during connection to 192.168.0.108:8919
+23:45:08.889 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.client.transport.rsocket.RSocketClient Finish connect to 192.168.0.108:8919
+23:45:08.889 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.data.storage.InstanceStorageKt Save instance: 192.168.0.108:8919
+23:45:08.889 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery First registration start
+23:45:08.890 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Client of 192.168.0.108:8919 is null
+23:45:08.891 [reactor-tcp-nio-3] DEBUG reactor.netty.resources.PooledConnectionProvider [id: 0x5bd98ed7] Created new pooled channel, now 1 active connections and 0 inactive connections
+23:45:08.891 [reactor-tcp-nio-3] DEBUG reactor.netty.channel.BootstrapHandlers [id: 0x5bd98ed7] Initialized pipeline DefaultChannelPipeline{(BootstrapHandlers$BootstrapInitializerHandler#0 = reactor.netty.channel.BootstrapHandlers$BootstrapInitializerHandler), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+23:45:10.967 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Cannot connect to 192.168.0.108:8919: Connection refused: no further information: /192.168.0.108:8919
+23:45:10.968 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Bad reconnection
+23:45:10.968 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.server.Discovery Can not registration in instance 192.168.0.108:8919
+23:45:16.081 [DefaultDispatcher-worker-2] WARN  org.bravo.bravodb.server.Discovery Storage state:  (192.168.0.108:8919)
+23:45:25.970 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Start re-registration
+23:45:25.970 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Client of 192.168.0.108:8919 is null
+23:45:25.978 [reactor-tcp-nio-4] DEBUG reactor.netty.resources.PooledConnectionProvider [id: 0xcbb912a3] Created new pooled channel, now 1 active connections and 0 inactive connections
+23:45:25.980 [reactor-tcp-nio-4] DEBUG reactor.netty.channel.BootstrapHandlers [id: 0xcbb912a3] Initialized pipeline DefaultChannelPipeline{(BootstrapHandlers$BootstrapInitializerHandler#0 = reactor.netty.channel.BootstrapHandlers$BootstrapInitializerHandler), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+23:45:26.094 [DefaultDispatcher-worker-2] WARN  org.bravo.bravodb.server.Discovery Storage state:  (192.168.0.108:8919)
+23:45:28.284 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Cannot connect to 192.168.0.108:8919: Connection refused: no further information: /192.168.0.108:8919
+23:45:28.284 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Bad reconnection
+23:45:28.285 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.server.Discovery Reregistration in InstanceInfo(host=192.168.0.108, port=8919) is bad
+23:45:28.285 [DefaultDispatcher-worker-1] WARN  org.bravo.bravodb.server.Discovery Delete 192.168.0.108:8919 is successfully
+23:45:28.285 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Finish re-registration
+23:45:36.095 [DefaultDispatcher-worker-2] WARN  org.bravo.bravodb.server.Discovery Storage state: 
+23:45:43.287 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Start re-registration
+23:45:43.287 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Finish re-registration
+23:45:46.103 [DefaultDispatcher-worker-2] WARN  org.bravo.bravodb.server.Discovery Storage state: 
+23:45:56.105 [DefaultDispatcher-worker-2] WARN  org.bravo.bravodb.server.Discovery Storage state: 
+23:45:58.300 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Start re-registration
+23:45:58.300 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Finish re-registration
+23:46:06.117 [DefaultDispatcher-worker-2] WARN  org.bravo.bravodb.server.Discovery Storage state: 
+23:46:13.304 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Start re-registration
+23:46:13.304 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Finish re-registration
+23:46:16.132 [DefaultDispatcher-worker-2] WARN  org.bravo.bravodb.server.Discovery Storage state: 
+23:46:26.147 [DefaultDispatcher-worker-2] WARN  org.bravo.bravodb.server.Discovery Storage state: 
+23:46:28.306 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Start re-registration
+23:46:28.306 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Finish re-registration
+23:46:36.160 [DefaultDispatcher-worker-2] WARN  org.bravo.bravodb.server.Discovery Storage state: 
+23:46:43.318 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Start re-registration
+23:46:43.318 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Finish re-registration
+23:47:56.098 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.BravodbApplicationKt Setup discovery properties: BravoDBProperties(selfServerHost=192.168.0.107, selfServerPort=8919, otherServerHost=192.168.0.108, otherServerPort=8919)
+23:47:56.104 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Discovery start
+23:47:56.104 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Start bootstrap server
+23:47:56.104 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.server.Server Bootstrap discovery server start on port 8919
+23:47:56.128 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.logging.InternalLoggerFactory Using SLF4J as the default logging framework
+23:47:56.134 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.InternalThreadLocalMap -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+23:47:56.135 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.InternalThreadLocalMap -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+23:47:56.148 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent Platform: Windows
+23:47:56.151 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent0 -Dio.netty.noUnsafe: false
+23:47:56.151 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent0 Java version: 11
+23:47:56.152 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent0 sun.misc.Unsafe.theUnsafe: available
+23:47:56.153 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent0 sun.misc.Unsafe.copyMemory: available
+23:47:56.153 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent0 java.nio.Buffer.address: available
+23:47:56.154 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent0 direct buffer constructor: unavailable
+java.lang.UnsupportedOperationException: Reflective setAccessible(true) disabled
+	at io.netty.util.internal.ReflectionUtil.trySetAccessible(ReflectionUtil.java:31) ~[netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.util.internal.PlatformDependent0$4.run(PlatformDependent0.java:224) ~[netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at java.security.AccessController.doPrivileged(Native Method) ~[?:?]
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:218) [netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272) [netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92) [netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.buffer.ByteBufUtil.<clinit>(ByteBufUtil.java:76) [netty-buffer-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.buffer.ByteBufAllocator.<clinit>(ByteBufAllocator.java:24) [netty-buffer-4.1.39.Final.jar:4.1.39.Final]
+	at io.rsocket.RSocketFactory$ServerRSocketFactory.<init>(RSocketFactory.java:449) [rsocket-core-1.0.0-RC6.jar:?]
+	at io.rsocket.RSocketFactory$ServerRSocketFactory.<init>(RSocketFactory.java:430) [rsocket-core-1.0.0-RC6.jar:?]
+	at io.rsocket.RSocketFactory.receive(RSocketFactory.java:69) [rsocket-core-1.0.0-RC6.jar:?]
+	at org.bravo.bravodb.server.server.transport.rsocket.RSocketServerDiscovery.start(RSocketServerDiscovery.kt:21) [main/:?]
+	at org.bravo.bravodb.server.server.Server.bootstrap(Server.kt:26) [main/:?]
+	at org.bravo.bravodb.server.server.Server.start(Server.kt:21) [main/:?]
+	at org.bravo.bravodb.server.Discovery.bootstrapServer(Discovery.kt:125) [main/:?]
+	at org.bravo.bravodb.server.Discovery$start$1.invokeSuspend(Discovery.kt:49) [main/:?]
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33) [kotlin-stdlib-1.3.71.jar:1.3.71-release-431 (1.3.71)]
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:56) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:271) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:79) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:54) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:36) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at org.bravo.bravodb.server.Discovery.start(Discovery.kt:35) [main/:?]
+	at org.bravo.bravodb.BravodbApplicationKt.initializeDiscovery(BravodbApplication.kt:59) [main/:?]
+	at org.bravo.bravodb.BravodbApplicationKt$main$1.invokeSuspend(BravodbApplication.kt:19) [main/:?]
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33) [kotlin-stdlib-1.3.71.jar:1.3.71-release-431 (1.3.71)]
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:56) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:561) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:727) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:667) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:655) [kotlinx-coroutines-core-1.3.3.jar:?]
+23:47:56.165 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent0 java.nio.Bits.unaligned: available, true
+23:47:56.166 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent0 jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable
+java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent0$6 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module @4fd339af
+	at jdk.internal.reflect.Reflection.newIllegalAccessException(Reflection.java:361) ~[?:?]
+	at java.lang.reflect.AccessibleObject.checkAccess(AccessibleObject.java:591) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:558) ~[?:?]
+	at io.netty.util.internal.PlatformDependent0$6.run(PlatformDependent0.java:334) ~[netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at java.security.AccessController.doPrivileged(Native Method) ~[?:?]
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:325) [netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272) [netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92) [netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.buffer.ByteBufUtil.<clinit>(ByteBufUtil.java:76) [netty-buffer-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.buffer.ByteBufAllocator.<clinit>(ByteBufAllocator.java:24) [netty-buffer-4.1.39.Final.jar:4.1.39.Final]
+	at io.rsocket.RSocketFactory$ServerRSocketFactory.<init>(RSocketFactory.java:449) [rsocket-core-1.0.0-RC6.jar:?]
+	at io.rsocket.RSocketFactory$ServerRSocketFactory.<init>(RSocketFactory.java:430) [rsocket-core-1.0.0-RC6.jar:?]
+	at io.rsocket.RSocketFactory.receive(RSocketFactory.java:69) [rsocket-core-1.0.0-RC6.jar:?]
+	at org.bravo.bravodb.server.server.transport.rsocket.RSocketServerDiscovery.start(RSocketServerDiscovery.kt:21) [main/:?]
+	at org.bravo.bravodb.server.server.Server.bootstrap(Server.kt:26) [main/:?]
+	at org.bravo.bravodb.server.server.Server.start(Server.kt:21) [main/:?]
+	at org.bravo.bravodb.server.Discovery.bootstrapServer(Discovery.kt:125) [main/:?]
+	at org.bravo.bravodb.server.Discovery$start$1.invokeSuspend(Discovery.kt:49) [main/:?]
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33) [kotlin-stdlib-1.3.71.jar:1.3.71-release-431 (1.3.71)]
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:56) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:271) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:79) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:54) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:36) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at org.bravo.bravodb.server.Discovery.start(Discovery.kt:35) [main/:?]
+	at org.bravo.bravodb.BravodbApplicationKt.initializeDiscovery(BravodbApplication.kt:59) [main/:?]
+	at org.bravo.bravodb.BravodbApplicationKt$main$1.invokeSuspend(BravodbApplication.kt:19) [main/:?]
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33) [kotlin-stdlib-1.3.71.jar:1.3.71-release-431 (1.3.71)]
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:56) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:561) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:727) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:667) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:655) [kotlinx-coroutines-core-1.3.3.jar:?]
+23:47:56.167 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent0 java.nio.DirectByteBuffer.<init>(long, int): unavailable
+23:47:56.167 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent sun.misc.Unsafe: available
+23:47:56.168 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent maxDirectMemory: 6431965184 bytes (maybe)
+23:47:56.168 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent -Dio.netty.tmpdir: C:\Users\dadan\AppData\Local\Temp (java.io.tmpdir)
+23:47:56.169 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent -Dio.netty.bitMode: 64 (sun.arch.data.model)
+23:47:56.169 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent -Dio.netty.maxDirectMemory: -1 bytes
+23:47:56.169 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent -Dio.netty.uninitializedArrayAllocationThreshold: -1
+23:47:56.171 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.CleanerJava9 java.nio.ByteBuffer.cleaner(): available
+23:47:56.171 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent -Dio.netty.noPreferDirect: false
+23:47:56.179 [DefaultDispatcher-worker-1] DEBUG io.netty.util.ResourceLeakDetector -Dio.netty.leakDetection.level: simple
+23:47:56.179 [DefaultDispatcher-worker-1] DEBUG io.netty.util.ResourceLeakDetector -Dio.netty.leakDetection.targetRecords: 4
+23:47:56.182 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.numHeapArenas: 16
+23:47:56.182 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.numDirectArenas: 16
+23:47:56.182 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.pageSize: 8192
+23:47:56.182 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.maxOrder: 11
+23:47:56.182 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.chunkSize: 16777216
+23:47:56.182 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.tinyCacheSize: 512
+23:47:56.182 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.smallCacheSize: 256
+23:47:56.182 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.normalCacheSize: 64
+23:47:56.182 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+23:47:56.182 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.cacheTrimInterval: 8192
+23:47:56.183 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+23:47:56.183 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.useCacheForAllThreads: true
+23:47:56.183 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+23:47:56.189 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.ByteBufUtil -Dio.netty.allocator.type: pooled
+23:47:56.189 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.ByteBufUtil -Dio.netty.threadLocalDirectBufferSize: 0
+23:47:56.189 [DefaultDispatcher-worker-1] DEBUG io.netty.buffer.ByteBufUtil -Dio.netty.maxThreadLocalCharBufferSize: 16384
+23:47:56.210 [DefaultDispatcher-worker-1] DEBUG reactor.util.Loggers$LoggerFactory Using Slf4j logging framework
+23:47:56.271 [DefaultDispatcher-worker-1] DEBUG io.netty.util.NetUtil -Djava.net.preferIPv4Stack: false
+23:47:56.271 [DefaultDispatcher-worker-1] DEBUG io.netty.util.NetUtil -Djava.net.preferIPv6Addresses: false
+23:47:56.442 [DefaultDispatcher-worker-1] DEBUG io.netty.util.NetUtil Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+23:47:56.442 [DefaultDispatcher-worker-1] DEBUG io.netty.util.NetUtil Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+23:47:56.457 [DefaultDispatcher-worker-1] DEBUG reactor.netty.tcp.TcpResources [tcp] resources will use the default LoopResources: DefaultLoopResources {prefix=reactor-tcp, daemon=true, selectCount=8, workerCount=8}
+23:47:56.457 [DefaultDispatcher-worker-1] DEBUG reactor.netty.tcp.TcpResources [tcp] resources will use the default ConnectionProvider: PooledConnectionProvider {name=tcp, poolFactory=reactor.netty.resources.ConnectionProvider$$Lambda$126/0x0000000800299040@2b702703}
+23:47:56.460 [DefaultDispatcher-worker-1] DEBUG reactor.netty.resources.DefaultLoopEpoll Default Epoll support : false
+23:47:56.461 [DefaultDispatcher-worker-1] DEBUG reactor.netty.resources.DefaultLoopKQueue Default KQueue support : false
+23:47:56.464 [DefaultDispatcher-worker-1] DEBUG io.netty.channel.MultithreadEventLoopGroup -Dio.netty.eventLoopThreads: 16
+23:47:56.481 [DefaultDispatcher-worker-1] DEBUG io.netty.channel.nio.NioEventLoop -Dio.netty.noKeySetOptimization: false
+23:47:56.481 [DefaultDispatcher-worker-1] DEBUG io.netty.channel.nio.NioEventLoop -Dio.netty.selectorAutoRebuildThreshold: 512
+23:47:56.486 [DefaultDispatcher-worker-1] DEBUG io.netty.util.internal.PlatformDependent org.jctools-core.MpscChunkedArrayQueue: available
+23:47:56.496 [DefaultDispatcher-worker-1] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@54086858
+23:47:56.497 [DefaultDispatcher-worker-1] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@14bf2244
+23:47:56.498 [DefaultDispatcher-worker-1] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@6396dba8
+23:47:56.498 [DefaultDispatcher-worker-1] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@37806400
+23:47:56.499 [DefaultDispatcher-worker-1] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@1b8ddd84
+23:47:56.499 [DefaultDispatcher-worker-1] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@764d61b3
+23:47:56.500 [DefaultDispatcher-worker-1] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@2353af49
+23:47:56.500 [DefaultDispatcher-worker-1] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@17c77f47
+23:47:56.519 [DefaultDispatcher-worker-1] DEBUG io.netty.channel.DefaultChannelId -Dio.netty.processId: 13856 (auto-detected)
+23:47:56.694 [DefaultDispatcher-worker-1] DEBUG io.netty.channel.DefaultChannelId -Dio.netty.machineId: 40:8d:5c:ff:fe:eb:3e:fc (auto-detected)
+23:47:56.721 [reactor-tcp-nio-1] DEBUG reactor.netty.tcp.TcpServer [id: 0xf059fbec, L:/0:0:0:0:0:0:0:0:8919] Bound new server
+23:47:56.774 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Finish bootstrap server
+23:47:56.776 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.client.transport.rsocket.RSocketClient Start connect to 192.168.0.108:8919
+23:47:56.795 [DefaultDispatcher-worker-1] DEBUG reactor.netty.resources.PooledConnectionProvider Creating new client pool [tcp] for /192.168.0.108:8919
+23:47:56.813 [reactor-tcp-nio-2] DEBUG reactor.netty.resources.PooledConnectionProvider [id: 0xeb6834ee] Created new pooled channel, now 1 active connections and 0 inactive connections
+23:47:56.818 [reactor-tcp-nio-2] DEBUG reactor.netty.channel.BootstrapHandlers [id: 0xeb6834ee] Initialized pipeline DefaultChannelPipeline{(BootstrapHandlers$BootstrapInitializerHandler#0 = reactor.netty.channel.BootstrapHandlers$BootstrapInitializerHandler), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+23:47:58.937 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Cannot connect to 192.168.0.108:8919: Connection refused: no further information: /192.168.0.108:8919
+23:47:58.937 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Error init RSocketClient during connection to 192.168.0.108:8919
+23:47:58.938 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.client.transport.rsocket.RSocketClient Finish connect to 192.168.0.108:8919
+23:47:58.939 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.data.storage.InstanceStorageKt Save instance: 192.168.0.108:8919
+23:47:58.939 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery First registration start
+23:47:58.940 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Client of 192.168.0.108:8919 is null
+23:47:58.943 [reactor-tcp-nio-3] DEBUG reactor.netty.resources.PooledConnectionProvider [id: 0xb146b8ea] Created new pooled channel, now 1 active connections and 0 inactive connections
+23:47:58.943 [reactor-tcp-nio-3] DEBUG reactor.netty.channel.BootstrapHandlers [id: 0xb146b8ea] Initialized pipeline DefaultChannelPipeline{(BootstrapHandlers$BootstrapInitializerHandler#0 = reactor.netty.channel.BootstrapHandlers$BootstrapInitializerHandler), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+23:48:01.030 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Cannot connect to 192.168.0.108:8919: Connection refused: no further information: /192.168.0.108:8919
+23:48:01.031 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Bad reconnection
+23:48:01.031 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.server.Discovery Can not registration in instance 192.168.0.108:8919
+23:48:06.131 [DefaultDispatcher-worker-2] WARN  org.bravo.bravodb.server.Discovery Storage state:  (192.168.0.108:8919)
+23:48:16.042 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Start re-registration
+23:48:16.042 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Client of 192.168.0.108:8919 is null
+23:48:16.044 [reactor-tcp-nio-4] DEBUG reactor.netty.resources.PooledConnectionProvider [id: 0xd0bbe6a4] Created new pooled channel, now 1 active connections and 0 inactive connections
+23:48:16.044 [reactor-tcp-nio-4] DEBUG reactor.netty.channel.BootstrapHandlers [id: 0xd0bbe6a4] Initialized pipeline DefaultChannelPipeline{(BootstrapHandlers$BootstrapInitializerHandler#0 = reactor.netty.channel.BootstrapHandlers$BootstrapInitializerHandler), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+23:48:16.135 [DefaultDispatcher-worker-2] WARN  org.bravo.bravodb.server.Discovery Storage state:  (192.168.0.108:8919)
+23:48:18.182 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Cannot connect to 192.168.0.108:8919: Connection refused: no further information: /192.168.0.108:8919
+23:48:18.182 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Bad reconnection
+23:48:18.183 [DefaultDispatcher-worker-1] ERROR org.bravo.bravodb.server.Discovery Reregistration in InstanceInfo(host=192.168.0.108, port=8919) is bad
+23:48:18.183 [DefaultDispatcher-worker-1] WARN  org.bravo.bravodb.server.Discovery Delete 192.168.0.108:8919 is successfully
+23:48:18.183 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Finish re-registration
+23:48:26.148 [DefaultDispatcher-worker-2] WARN  org.bravo.bravodb.server.Discovery Storage state: 
+23:48:33.188 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Start re-registration
+23:48:33.188 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Finish re-registration
+23:48:36.162 [DefaultDispatcher-worker-2] WARN  org.bravo.bravodb.server.Discovery Storage state: 
+23:48:46.166 [DefaultDispatcher-worker-2] WARN  org.bravo.bravodb.server.Discovery Storage state: 
+23:48:48.201 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Start re-registration
+23:48:48.201 [DefaultDispatcher-worker-1] INFO  org.bravo.bravodb.server.Discovery Finish re-registration
+23:48:56.167 [DefaultDispatcher-worker-2] WARN  org.bravo.bravodb.server.Discovery Storage state: 
+23:51:30.385 [DefaultDispatcher-worker-2] INFO  org.bravo.bravodb.BravodbApplicationKt Setup discovery properties: BravoDBProperties(selfServerHost=192.168.0.107, selfServerPort=8919, otherServerHost=172.30.0.6, otherServerPort=8919)
+23:51:30.393 [DefaultDispatcher-worker-2] INFO  org.bravo.bravodb.server.Discovery Discovery start
+23:51:30.394 [DefaultDispatcher-worker-2] INFO  org.bravo.bravodb.server.Discovery Start bootstrap server
+23:51:30.394 [DefaultDispatcher-worker-2] INFO  org.bravo.bravodb.server.server.Server Bootstrap discovery server start on port 8919
+23:51:30.415 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.logging.InternalLoggerFactory Using SLF4J as the default logging framework
+23:51:30.420 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.InternalThreadLocalMap -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+23:51:30.420 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.InternalThreadLocalMap -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+23:51:30.431 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.PlatformDependent Platform: Windows
+23:51:30.433 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.PlatformDependent0 -Dio.netty.noUnsafe: false
+23:51:30.433 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.PlatformDependent0 Java version: 11
+23:51:30.435 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.PlatformDependent0 sun.misc.Unsafe.theUnsafe: available
+23:51:30.435 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.PlatformDependent0 sun.misc.Unsafe.copyMemory: available
+23:51:30.435 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.PlatformDependent0 java.nio.Buffer.address: available
+23:51:30.436 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.PlatformDependent0 direct buffer constructor: unavailable
+java.lang.UnsupportedOperationException: Reflective setAccessible(true) disabled
+	at io.netty.util.internal.ReflectionUtil.trySetAccessible(ReflectionUtil.java:31) ~[netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.util.internal.PlatformDependent0$4.run(PlatformDependent0.java:224) ~[netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at java.security.AccessController.doPrivileged(Native Method) ~[?:?]
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:218) [netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272) [netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92) [netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.buffer.ByteBufUtil.<clinit>(ByteBufUtil.java:76) [netty-buffer-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.buffer.ByteBufAllocator.<clinit>(ByteBufAllocator.java:24) [netty-buffer-4.1.39.Final.jar:4.1.39.Final]
+	at io.rsocket.RSocketFactory$ServerRSocketFactory.<init>(RSocketFactory.java:449) [rsocket-core-1.0.0-RC6.jar:?]
+	at io.rsocket.RSocketFactory$ServerRSocketFactory.<init>(RSocketFactory.java:430) [rsocket-core-1.0.0-RC6.jar:?]
+	at io.rsocket.RSocketFactory.receive(RSocketFactory.java:69) [rsocket-core-1.0.0-RC6.jar:?]
+	at org.bravo.bravodb.server.server.transport.rsocket.RSocketServerDiscovery.start(RSocketServerDiscovery.kt:21) [main/:?]
+	at org.bravo.bravodb.server.server.Server.bootstrap(Server.kt:26) [main/:?]
+	at org.bravo.bravodb.server.server.Server.start(Server.kt:21) [main/:?]
+	at org.bravo.bravodb.server.Discovery.bootstrapServer(Discovery.kt:125) [main/:?]
+	at org.bravo.bravodb.server.Discovery$start$1.invokeSuspend(Discovery.kt:49) [main/:?]
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33) [kotlin-stdlib-1.3.71.jar:1.3.71-release-431 (1.3.71)]
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:56) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:271) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:79) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:54) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:36) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at org.bravo.bravodb.server.Discovery.start(Discovery.kt:35) [main/:?]
+	at org.bravo.bravodb.BravodbApplicationKt.initializeDiscovery(BravodbApplication.kt:59) [main/:?]
+	at org.bravo.bravodb.BravodbApplicationKt$main$1.invokeSuspend(BravodbApplication.kt:19) [main/:?]
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33) [kotlin-stdlib-1.3.71.jar:1.3.71-release-431 (1.3.71)]
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:56) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:561) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:727) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:667) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:655) [kotlinx-coroutines-core-1.3.3.jar:?]
+23:51:30.445 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.PlatformDependent0 java.nio.Bits.unaligned: available, true
+23:51:30.446 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.PlatformDependent0 jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable
+java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent0$6 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module @717e828d
+	at jdk.internal.reflect.Reflection.newIllegalAccessException(Reflection.java:361) ~[?:?]
+	at java.lang.reflect.AccessibleObject.checkAccess(AccessibleObject.java:591) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:558) ~[?:?]
+	at io.netty.util.internal.PlatformDependent0$6.run(PlatformDependent0.java:334) ~[netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at java.security.AccessController.doPrivileged(Native Method) ~[?:?]
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:325) [netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272) [netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92) [netty-common-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.buffer.ByteBufUtil.<clinit>(ByteBufUtil.java:76) [netty-buffer-4.1.39.Final.jar:4.1.39.Final]
+	at io.netty.buffer.ByteBufAllocator.<clinit>(ByteBufAllocator.java:24) [netty-buffer-4.1.39.Final.jar:4.1.39.Final]
+	at io.rsocket.RSocketFactory$ServerRSocketFactory.<init>(RSocketFactory.java:449) [rsocket-core-1.0.0-RC6.jar:?]
+	at io.rsocket.RSocketFactory$ServerRSocketFactory.<init>(RSocketFactory.java:430) [rsocket-core-1.0.0-RC6.jar:?]
+	at io.rsocket.RSocketFactory.receive(RSocketFactory.java:69) [rsocket-core-1.0.0-RC6.jar:?]
+	at org.bravo.bravodb.server.server.transport.rsocket.RSocketServerDiscovery.start(RSocketServerDiscovery.kt:21) [main/:?]
+	at org.bravo.bravodb.server.server.Server.bootstrap(Server.kt:26) [main/:?]
+	at org.bravo.bravodb.server.server.Server.start(Server.kt:21) [main/:?]
+	at org.bravo.bravodb.server.Discovery.bootstrapServer(Discovery.kt:125) [main/:?]
+	at org.bravo.bravodb.server.Discovery$start$1.invokeSuspend(Discovery.kt:49) [main/:?]
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33) [kotlin-stdlib-1.3.71.jar:1.3.71-release-431 (1.3.71)]
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:56) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:271) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:79) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:54) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:36) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at org.bravo.bravodb.server.Discovery.start(Discovery.kt:35) [main/:?]
+	at org.bravo.bravodb.BravodbApplicationKt.initializeDiscovery(BravodbApplication.kt:59) [main/:?]
+	at org.bravo.bravodb.BravodbApplicationKt$main$1.invokeSuspend(BravodbApplication.kt:19) [main/:?]
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33) [kotlin-stdlib-1.3.71.jar:1.3.71-release-431 (1.3.71)]
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:56) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:561) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:727) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:667) [kotlinx-coroutines-core-1.3.3.jar:?]
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:655) [kotlinx-coroutines-core-1.3.3.jar:?]
+23:51:30.447 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.PlatformDependent0 java.nio.DirectByteBuffer.<init>(long, int): unavailable
+23:51:30.448 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.PlatformDependent sun.misc.Unsafe: available
+23:51:30.449 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.PlatformDependent maxDirectMemory: 6431965184 bytes (maybe)
+23:51:30.449 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.PlatformDependent -Dio.netty.tmpdir: C:\Users\dadan\AppData\Local\Temp (java.io.tmpdir)
+23:51:30.449 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.PlatformDependent -Dio.netty.bitMode: 64 (sun.arch.data.model)
+23:51:30.450 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.PlatformDependent -Dio.netty.maxDirectMemory: -1 bytes
+23:51:30.450 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.PlatformDependent -Dio.netty.uninitializedArrayAllocationThreshold: -1
+23:51:30.451 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.CleanerJava9 java.nio.ByteBuffer.cleaner(): available
+23:51:30.451 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.PlatformDependent -Dio.netty.noPreferDirect: false
+23:51:30.459 [DefaultDispatcher-worker-2] DEBUG io.netty.util.ResourceLeakDetector -Dio.netty.leakDetection.level: simple
+23:51:30.459 [DefaultDispatcher-worker-2] DEBUG io.netty.util.ResourceLeakDetector -Dio.netty.leakDetection.targetRecords: 4
+23:51:30.462 [DefaultDispatcher-worker-2] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.numHeapArenas: 16
+23:51:30.462 [DefaultDispatcher-worker-2] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.numDirectArenas: 16
+23:51:30.462 [DefaultDispatcher-worker-2] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.pageSize: 8192
+23:51:30.462 [DefaultDispatcher-worker-2] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.maxOrder: 11
+23:51:30.462 [DefaultDispatcher-worker-2] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.chunkSize: 16777216
+23:51:30.462 [DefaultDispatcher-worker-2] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.tinyCacheSize: 512
+23:51:30.462 [DefaultDispatcher-worker-2] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.smallCacheSize: 256
+23:51:30.463 [DefaultDispatcher-worker-2] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.normalCacheSize: 64
+23:51:30.463 [DefaultDispatcher-worker-2] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+23:51:30.463 [DefaultDispatcher-worker-2] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.cacheTrimInterval: 8192
+23:51:30.463 [DefaultDispatcher-worker-2] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+23:51:30.463 [DefaultDispatcher-worker-2] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.useCacheForAllThreads: true
+23:51:30.463 [DefaultDispatcher-worker-2] DEBUG io.netty.buffer.PooledByteBufAllocator -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+23:51:30.469 [DefaultDispatcher-worker-2] DEBUG io.netty.buffer.ByteBufUtil -Dio.netty.allocator.type: pooled
+23:51:30.469 [DefaultDispatcher-worker-2] DEBUG io.netty.buffer.ByteBufUtil -Dio.netty.threadLocalDirectBufferSize: 0
+23:51:30.469 [DefaultDispatcher-worker-2] DEBUG io.netty.buffer.ByteBufUtil -Dio.netty.maxThreadLocalCharBufferSize: 16384
+23:51:30.490 [DefaultDispatcher-worker-2] DEBUG reactor.util.Loggers$LoggerFactory Using Slf4j logging framework
+23:51:30.558 [DefaultDispatcher-worker-2] DEBUG io.netty.util.NetUtil -Djava.net.preferIPv4Stack: false
+23:51:30.559 [DefaultDispatcher-worker-2] DEBUG io.netty.util.NetUtil -Djava.net.preferIPv6Addresses: false
+23:51:30.737 [DefaultDispatcher-worker-2] DEBUG io.netty.util.NetUtil Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+23:51:30.737 [DefaultDispatcher-worker-2] DEBUG io.netty.util.NetUtil Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+23:51:30.751 [DefaultDispatcher-worker-2] DEBUG reactor.netty.tcp.TcpResources [tcp] resources will use the default LoopResources: DefaultLoopResources {prefix=reactor-tcp, daemon=true, selectCount=8, workerCount=8}
+23:51:30.752 [DefaultDispatcher-worker-2] DEBUG reactor.netty.tcp.TcpResources [tcp] resources will use the default ConnectionProvider: PooledConnectionProvider {name=tcp, poolFactory=reactor.netty.resources.ConnectionProvider$$Lambda$126/0x0000000800299040@39d163a2}
+23:51:30.755 [DefaultDispatcher-worker-2] DEBUG reactor.netty.resources.DefaultLoopEpoll Default Epoll support : false
+23:51:30.755 [DefaultDispatcher-worker-2] DEBUG reactor.netty.resources.DefaultLoopKQueue Default KQueue support : false
+23:51:30.758 [DefaultDispatcher-worker-2] DEBUG io.netty.channel.MultithreadEventLoopGroup -Dio.netty.eventLoopThreads: 16
+23:51:30.774 [DefaultDispatcher-worker-2] DEBUG io.netty.channel.nio.NioEventLoop -Dio.netty.noKeySetOptimization: false
+23:51:30.774 [DefaultDispatcher-worker-2] DEBUG io.netty.channel.nio.NioEventLoop -Dio.netty.selectorAutoRebuildThreshold: 512
+23:51:30.779 [DefaultDispatcher-worker-2] DEBUG io.netty.util.internal.PlatformDependent org.jctools-core.MpscChunkedArrayQueue: available
+23:51:30.789 [DefaultDispatcher-worker-2] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@c42ae32
+23:51:30.790 [DefaultDispatcher-worker-2] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@1f914840
+23:51:30.791 [DefaultDispatcher-worker-2] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@67cece8d
+23:51:30.792 [DefaultDispatcher-worker-2] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@11998976
+23:51:30.792 [DefaultDispatcher-worker-2] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@2e2660b4
+23:51:30.793 [DefaultDispatcher-worker-2] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@3be0fe78
+23:51:30.793 [DefaultDispatcher-worker-2] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@2acbe52f
+23:51:30.794 [DefaultDispatcher-worker-2] TRACE io.netty.channel.nio.NioEventLoop instrumented a special java.util.Set into: sun.nio.ch.WindowsSelectorImpl@77441b39
+23:51:30.813 [DefaultDispatcher-worker-2] DEBUG io.netty.channel.DefaultChannelId -Dio.netty.processId: 17896 (auto-detected)
+23:51:30.984 [DefaultDispatcher-worker-2] DEBUG io.netty.channel.DefaultChannelId -Dio.netty.machineId: 40:8d:5c:ff:fe:eb:3e:fc (auto-detected)
+23:51:31.012 [reactor-tcp-nio-1] DEBUG reactor.netty.tcp.TcpServer [id: 0xd4ef5b0f, L:/0:0:0:0:0:0:0:0:8919] Bound new server
+23:51:31.068 [DefaultDispatcher-worker-2] INFO  org.bravo.bravodb.server.Discovery Finish bootstrap server
+23:51:31.070 [DefaultDispatcher-worker-2] INFO  org.bravo.bravodb.client.transport.rsocket.RSocketClient Start connect to 172.30.0.6:8919
+23:51:31.094 [DefaultDispatcher-worker-2] DEBUG reactor.netty.resources.PooledConnectionProvider Creating new client pool [tcp] for /172.30.0.6:8919
+23:51:31.113 [reactor-tcp-nio-2] DEBUG reactor.netty.resources.PooledConnectionProvider [id: 0xff49227b] Created new pooled channel, now 1 active connections and 0 inactive connections
+23:51:31.119 [reactor-tcp-nio-2] DEBUG reactor.netty.channel.BootstrapHandlers [id: 0xff49227b] Initialized pipeline DefaultChannelPipeline{(BootstrapHandlers$BootstrapInitializerHandler#0 = reactor.netty.channel.BootstrapHandlers$BootstrapInitializerHandler), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+23:51:40.405 [DefaultDispatcher-worker-1] WARN  org.bravo.bravodb.server.Discovery Storage state: 
+23:51:50.413 [DefaultDispatcher-worker-1] WARN  org.bravo.bravodb.server.Discovery Storage state: 
+23:51:52.168 [DefaultDispatcher-worker-2] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Cannot connect to 172.30.0.6:8919: Connection timed out: no further information: /172.30.0.6:8919
+23:51:52.169 [DefaultDispatcher-worker-2] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Error init RSocketClient during connection to 172.30.0.6:8919
+23:51:52.169 [DefaultDispatcher-worker-2] INFO  org.bravo.bravodb.client.transport.rsocket.RSocketClient Finish connect to 172.30.0.6:8919
+23:51:52.169 [DefaultDispatcher-worker-2] INFO  org.bravo.bravodb.data.storage.InstanceStorageKt Save instance: 172.30.0.6:8919
+23:51:52.170 [DefaultDispatcher-worker-2] INFO  org.bravo.bravodb.server.Discovery First registration start
+23:51:52.170 [DefaultDispatcher-worker-2] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Client of 172.30.0.6:8919 is null
+23:51:52.172 [reactor-tcp-nio-3] DEBUG reactor.netty.resources.PooledConnectionProvider [id: 0x38f351f7] Created new pooled channel, now 1 active connections and 0 inactive connections
+23:51:52.172 [reactor-tcp-nio-3] DEBUG reactor.netty.channel.BootstrapHandlers [id: 0x38f351f7] Initialized pipeline DefaultChannelPipeline{(BootstrapHandlers$BootstrapInitializerHandler#0 = reactor.netty.channel.BootstrapHandlers$BootstrapInitializerHandler), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+23:52:00.423 [DefaultDispatcher-worker-1] WARN  org.bravo.bravodb.server.Discovery Storage state:  (172.30.0.6:8919)
+23:52:10.435 [DefaultDispatcher-worker-1] WARN  org.bravo.bravodb.server.Discovery Storage state:  (172.30.0.6:8919)
+23:52:13.215 [DefaultDispatcher-worker-2] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Cannot connect to 172.30.0.6:8919: Connection timed out: no further information: /172.30.0.6:8919
+23:52:13.215 [DefaultDispatcher-worker-2] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Bad reconnection
+23:52:13.215 [DefaultDispatcher-worker-2] ERROR org.bravo.bravodb.server.Discovery Can not registration in instance 172.30.0.6:8919
+23:52:20.450 [DefaultDispatcher-worker-1] WARN  org.bravo.bravodb.server.Discovery Storage state:  (172.30.0.6:8919)
+23:52:28.230 [DefaultDispatcher-worker-2] INFO  org.bravo.bravodb.server.Discovery Start re-registration
+23:52:28.230 [DefaultDispatcher-worker-2] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Client of 172.30.0.6:8919 is null
+23:52:28.233 [reactor-tcp-nio-4] DEBUG reactor.netty.resources.PooledConnectionProvider [id: 0x16f158d8] Created new pooled channel, now 1 active connections and 0 inactive connections
+23:52:28.234 [reactor-tcp-nio-4] DEBUG reactor.netty.channel.BootstrapHandlers [id: 0x16f158d8] Initialized pipeline DefaultChannelPipeline{(BootstrapHandlers$BootstrapInitializerHandler#0 = reactor.netty.channel.BootstrapHandlers$BootstrapInitializerHandler), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+23:52:30.451 [DefaultDispatcher-worker-1] WARN  org.bravo.bravodb.server.Discovery Storage state:  (172.30.0.6:8919)
+23:52:35.698 [main] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Cannot send data to 172.30.0.6:8919: client not connection
+23:52:40.458 [DefaultDispatcher-worker-1] WARN  org.bravo.bravodb.server.Discovery Storage state:  (172.30.0.6:8919)
+23:52:40.841 [main] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Cannot send data to 172.30.0.6:8919: client not connection
+23:52:41.673 [main] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Cannot send data to 172.30.0.6:8919: client not connection
+23:52:42.401 [main] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Cannot send data to 172.30.0.6:8919: client not connection
+23:52:49.265 [DefaultDispatcher-worker-2] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Cannot connect to 172.30.0.6:8919: Connection timed out: no further information: /172.30.0.6:8919
+23:52:49.265 [DefaultDispatcher-worker-2] ERROR org.bravo.bravodb.client.transport.rsocket.RSocketClient Bad reconnection
+23:52:49.266 [DefaultDispatcher-worker-2] ERROR org.bravo.bravodb.server.Discovery Reregistration in InstanceInfo(host=172.30.0.6, port=8919) is bad
+23:52:49.266 [DefaultDispatcher-worker-2] WARN  org.bravo.bravodb.server.Discovery Delete 172.30.0.6:8919 is successfully
+23:52:49.267 [DefaultDispatcher-worker-2] INFO  org.bravo.bravodb.server.Discovery Finish re-registration
+23:52:50.473 [DefaultDispatcher-worker-1] WARN  org.bravo.bravodb.server.Discovery Storage state: 
+23:53:00.479 [DefaultDispatcher-worker-1] WARN  org.bravo.bravodb.server.Discovery Storage state: 
+23:53:04.281 [DefaultDispatcher-worker-2] INFO  org.bravo.bravodb.server.Discovery Start re-registration
+23:53:04.281 [DefaultDispatcher-worker-2] INFO  org.bravo.bravodb.server.Discovery Finish re-registration
