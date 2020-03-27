@@ -14,13 +14,15 @@ import kotlin.system.measureTimeMillis
 private val logger = LogManager.getLogger()
 
 fun main() {
-    // try {
-    //     initializeDiscovery()
-    // } catch (e: Exception) {
-    //     logger.error("Error from main: ${e.message}")
-    // } catch (thr: Throwable) {
-    //     logger.error("Error from main: ${thr.message}")
-    // }
+    GlobalScope.launch {
+        try {
+            initializeDiscovery()
+        } catch (e: Exception) {
+            logger.error("Error from main: ${e.message}")
+        } catch (thr: Throwable) {
+            logger.error("Error from main: ${thr.message}")
+        }
+    }.start()
     CommandLineRunner.run()
 }
 

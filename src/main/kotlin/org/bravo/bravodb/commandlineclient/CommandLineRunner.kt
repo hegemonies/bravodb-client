@@ -30,7 +30,10 @@ object CommandLineRunner {
             val command = strings[0]
             return when (command) {
                 "get" -> {
-                    println("> ${ClientFacade.getData(strings[1])}")
+                    val key = strings[1]
+                    ClientFacade.getData(key)?.also { data ->
+                        println(":> ${data.key} ${data.value}")
+                    } ?: println(":> records with key $key not found")
                     true
                 }
                 "put" -> {

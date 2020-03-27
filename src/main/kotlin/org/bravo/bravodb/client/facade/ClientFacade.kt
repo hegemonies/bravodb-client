@@ -9,23 +9,21 @@ object ClientFacade {
     private val logger = LogManager.getLogger(this::class.java.declaringClass)
 
     suspend fun putData(data: DataUnit): Boolean {
-        return true
-        // InstanceStorage.findAll().forEach { instance ->
-        //     if (instance.client.putData(data)) {
-        //         logger.info("Put data $data in ${instance.host}:${instance.port}")
-        //         return true
-        //     }
-        // }
-        // return false
+        InstanceStorage.findAll().forEach { instance ->
+            if (instance.client.putData(data)) {
+                logger.info("Put data $data in ${instance.host}:${instance.port}")
+                return true
+            }
+        }
+        return false
     }
 
     suspend fun getData(key: String): DataUnit? {
-        return DataUnit("key", "value")
-        // InstanceStorage.findAll().forEach { instance ->
-        //     instance.client.getData(key)?.let {
-        //         return it
-        //     }
-        // }
-        // return null
+        InstanceStorage.findAll().forEach { instance ->
+            instance.client.getData(key)?.let {
+                return it
+            }
+        }
+        return null
     }
 }

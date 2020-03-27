@@ -36,7 +36,7 @@ data class BravoDBProperties private constructor(
                 try {
                     properties.load(it)
                 } catch (e: Exception) {
-                    logger.error("Can not read properties file $resourceFilename", e)
+                    logger.error("Can not read properties file $resourceFilename: ${e.message}")
                     return null
                 }
 
