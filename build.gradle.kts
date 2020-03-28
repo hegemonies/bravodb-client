@@ -56,11 +56,11 @@ tasks.withType<KotlinCompile> {
 tasks.jar {
     manifest {
         attributes(
-            Pair("Main-Class", "org.bravo.bravodb.BravodbApplicationKt")
+            Pair("Main-Class", "org.bravo.bravodb.BravodbApplicationKt"),
+            Pair("Multi-Release", true)
         )
     }
 }
-
 
 jib {
     container {
