@@ -13,6 +13,7 @@ import org.apache.logging.log4j.LogManager
 import org.bravo.bravodb.client.transport.Client
 import org.bravo.bravodb.data.common.fromJson
 import org.bravo.bravodb.data.database.GetDataUnitRequest
+import org.bravo.bravodb.data.database.GetDataUnitResponse
 import org.bravo.bravodb.data.database.PutDataUnit
 import org.bravo.bravodb.data.registration.RegistrationRequest
 import org.bravo.bravodb.data.registration.RegistrationResponse
@@ -183,11 +184,11 @@ class RSocketClient(
         }
 
         return response.body?.let { body ->
-            val responseBody = fromJson<DataUnit>(body)
-            if (responseBody.key == "NO" && responseBody.value == "NO") {
+            val responseBody = fromJson<GetDataUnitResponse>(body)
+            if (responseBody.data.key == "NO" && responseBody.data.value == "NO") {
                 null
             } else {
-                responseBody
+                responseBody.data
             }
         }
     }
