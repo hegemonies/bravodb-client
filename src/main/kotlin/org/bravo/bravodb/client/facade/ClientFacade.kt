@@ -21,7 +21,7 @@ object ClientFacade {
     suspend fun getData(key: String): DataUnit? {
         InstanceStorage.findAll().forEach { instance ->
             instance.client.getData(key)?.let {
-                print("[${instance.host}:{instance.port}] ")
+                print("[${instance.host}:${instance.port}] ")
                 return it
             }
         }

@@ -67,7 +67,7 @@ class RSocketReceiveHandler : AbstractRSocket() {
                             val requestBody = fromJson<PutDataUnit>(request.body)
                             runBlocking { DataStorage.save(requestBody.key, requestBody.value) }
                             GlobalScope.launch { replicationData(requestBody) }.start()
-                            val response = Response(Answer(AnswerStatus.OK)).toJson()
+                            val response = Response(Answer(AnswerStatus.OK), DataType.PUT_DATA).toJson()
                             sink.success(DefaultPayload.create(response)).also {
                                 logger.info("Success answer $response")
                             }
