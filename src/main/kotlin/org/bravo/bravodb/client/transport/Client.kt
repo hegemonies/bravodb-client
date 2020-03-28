@@ -10,4 +10,5 @@ interface Client {
     suspend fun registration(selfHost: String, selfPort: Int): Boolean
     suspend fun putData(unit: DataUnit): Boolean
     suspend fun getData(key: String): DataUnit?
+    suspend fun replicateData(data: DataUnit): Boolean
 }

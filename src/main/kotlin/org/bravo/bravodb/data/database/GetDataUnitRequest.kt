@@ -8,5 +8,5 @@ data class GetDataUnitRequest(
 ) : JsonConverter()
 
 data class GetDataUnitResponse(
-    val data: DataUnit?
+    val data: DataUnit
 ) : JsonConverter()

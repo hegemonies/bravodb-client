@@ -4,5 +4,6 @@ enum class DataType {
     REGISTRATION_REQUEST,
     REGISTRATION_RESPONSE,
     PUT_DATA,
-    GET_DATA
+    GET_DATA,
+    REPLICATION_DATA
 }

@@ -45,8 +45,8 @@ class RSocketReceiveHandler : AbstractRSocket() {
                             runBlocking {
                                 GlobalScope.launch {
                                     InstanceStorage.save(
-                                        requestBody.instanceInfo.host,
-                                        requestBody.instanceInfo.port
+                                            requestBody.instanceInfo.host,
+                                            requestBody.instanceInfo.port
                                     )
                                 }.start()
                                 InstanceStorage.findAll().map { instanceInfo ->
@@ -74,8 +74,18 @@ class RSocketReceiveHandler : AbstractRSocket() {
                         }
                         DataType.GET_DATA -> {
                             val requestBody = fromJson<GetDataUnitRequest>(request.body)
-                            val responseBody = GetDataUnitResponse(DataStorage.findByKey(requestBody.key)).toJson()
+                            val responseBody = GetDataUnitResponse(
+                                    DataStorage.findByKey(requestBody.key) ?: DataUnit("NO", "NO")
+                            ).toJson()
                             val response = Response(Answer(AnswerStatus.OK), DataType.GET_DATA, responseBody).toJson()
+                            sink.success(DefaultPayload.create(response)).also {
+                                logger.info("Success answer $response")
+                            }
+                        }
+                        DataType.REPLICATION_DATA -> {
+                            val requestBody = fromJson<PutDataUnit>(request.body)
+                            runBlocking { DataStorage.save(requestBody.key, requestBody.value) }
+                            val response = Response(Answer(AnswerStatus.OK)).toJson()
                             sink.success(DefaultPayload.create(response)).also {
                                 logger.info("Success answer $response")
                             }
@@ -97,7 +107,7 @@ class RSocketReceiveHandler : AbstractRSocket() {
     private suspend fun replicationData(unitBody: PutDataUnit) {
         val data = DataUnit(unitBody.key, unitBody.value)
         InstanceStorage.findAll().asFlow().collect {
-            it.client.putData(data)
+            it.client.replicateData(data)
         }
     }
 
