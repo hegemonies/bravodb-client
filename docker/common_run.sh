@@ -8,4 +8,5 @@ docker run -it --rm \
  --name bravodbclient1 \
  --network docker_bravo-network \
  -v /home/dan-dy/git/bravodb-client/build/libs:/tmp \
- openjdk:11 /bin/bash
+ openjdk:11 \
+ java -jar /tmp/bravodb-client-0.1-all.jar
