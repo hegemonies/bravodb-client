@@ -43,7 +43,7 @@ object CommandLineRunner {
                     printHelp()
                     return@let true
                 }
-                val command = strings[0]
+                val command = strings[0].toLowerCase()
                 return when (command) {
                     "get", "g" -> {
                         runCatching {

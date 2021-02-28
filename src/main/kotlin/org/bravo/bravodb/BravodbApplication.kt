@@ -1,20 +1,28 @@
 package org.bravo.bravodb
 
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import org.apache.logging.log4j.LogManager
 import org.bravo.bravodb.commandlineclient.CommandLineRunner
 import org.bravo.bravodb.server.Discovery
 import org.bravo.bravodb.server.properties.BravoDBProperties
 import org.bravo.bravodb.server.server.config.ServerDiscoveryConfig
 import org.bravo.bravodb.server.server.transport.rsocket.RSocketServerDiscovery
+import kotlin.system.exitProcess
 import kotlin.system.measureTimeMillis
 
 private val logger = LogManager.getLogger()
 
-fun main() {
-    GlobalScope.launch {
+suspend fun main() {
+    val isClientMode = runCatching {
+        System.getenv("BRAVODB_CLIENT_MODE").toBoolean()
+    }.getOrElse { error ->
+        logger.info("BRAVODB_CLIENT_MODE not set, start as only server.")
+        false
+    }
+
+    val serverJob = GlobalScope.async {
         try {
             initializeDiscovery()
         } catch (e: Exception) {
@@ -22,8 +30,13 @@ fun main() {
         } catch (thr: Throwable) {
             logger.error("Error from main: ${thr.message}")
         }
-    }.start()
-    CommandLineRunner.run()
+    }
+
+    if (isClientMode) {
+        CommandLineRunner.run()
+    } else {
+        serverJob.join()
+    }
 }
 
 fun initializeDiscovery() {

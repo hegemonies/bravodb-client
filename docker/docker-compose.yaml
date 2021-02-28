@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+
+  bravodb1:
+    image: bravo/bravodb-client:0.1
+    restart: always
+    ports:
+      - 8920:8919
+    environment:
+      BRAVODB_SERVER_SELF_HOST: bravodb1
+      BRAVODB_SERVER_SELF_PORT: 8919
+      BRAVODB_CLIENT_MODE: "false"
+    networks:
+      - bravodb_network
+
+networks:
+  bravodb_network:

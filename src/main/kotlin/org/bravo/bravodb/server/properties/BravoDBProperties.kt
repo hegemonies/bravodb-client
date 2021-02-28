@@ -68,14 +68,14 @@ data class BravoDBProperties private constructor(
         }
 
         fun fromEnvironments(): BravoDBProperties {
-            val selfHost = System.getenv("bravodb.server.self.host")
+            val selfHost = System.getenv("BRAVODB_SERVER_SELF_HOST")
                 ?: errorLog("Self server host must be set")
-            val selfPort = System.getenv("bravodb.server.self.port")?.toInt()
+            val selfPort = System.getenv("BRAVODB_SERVER_SELF_PORT")?.toInt()
                 ?: errorLog("Self server port must be set")
 
-            val otherHost = System.getenv("bravodb.server.other.host")
+            val otherHost = System.getenv("BRAVODB_SERVER_OTHER_HOST")
             otherHost ?: logger.warn("Host other server does not set")
-            val otherPort = System.getenv("bravodb.server.other.port")?.toInt()
+            val otherPort = System.getenv("BRAVODB_SERVER_OTHER_PORT")?.toInt()
             otherPort ?: logger.warn("Port other server does not set")
 
             return BravoDBProperties(selfHost, selfPort, otherHost, otherPort)

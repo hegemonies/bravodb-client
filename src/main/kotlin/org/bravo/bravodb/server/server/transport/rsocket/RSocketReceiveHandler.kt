@@ -1,7 +1,7 @@
 package org.bravo.bravodb.server.server.transport.rsocket
 
-import io.rsocket.AbstractRSocket
 import io.rsocket.Payload
+import io.rsocket.RSocket
 import io.rsocket.util.DefaultPayload
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.asFlow
@@ -25,13 +25,13 @@ import org.bravo.bravodb.data.transport.Request
 import org.bravo.bravodb.data.transport.Response
 import reactor.core.publisher.Mono
 
-class RSocketReceiveHandler : AbstractRSocket() {
+class RSocketReceiveHandler : RSocket {
 
     /**
      * Registration handler: save instance info in storage and response
      * @param [payload] contain data about host instance (InstanceInfo}
      */
-    override fun requestResponse(payload: Payload?): Mono<Payload> {
+    override fun requestResponse(payload: Payload): Mono<Payload> {
         return Mono.create { sink ->
             logger.info("Receive data: ${payload?.dataUtf8}")
 

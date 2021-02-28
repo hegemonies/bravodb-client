@@ -1,7 +1,7 @@
 package org.bravo.bravodb.client.transport.rsocket
 
 import io.rsocket.RSocket
-import io.rsocket.RSocketFactory
+import io.rsocket.core.RSocketConnector
 import io.rsocket.frame.decoder.PayloadDecoder
 import io.rsocket.transport.netty.client.TcpClientTransport
 import io.rsocket.util.DefaultPayload
@@ -57,11 +57,10 @@ class RSocketClient(
                     client?.dispose()
                 }
             }
-            client = RSocketFactory.connect()
-                    .keepAlive(Duration.ofSeconds(5), Duration.ofSeconds(10), 5)
-                    .frameDecoder(PayloadDecoder.ZERO_COPY)
-                    .transport(TcpClientTransport.create(host, port))
-                    .start()
+            client = RSocketConnector.create()
+                    .keepAlive(Duration.ofSeconds(5), Duration.ofSeconds(10))
+                    .payloadDecoder(PayloadDecoder.ZERO_COPY)
+                    .connect(TcpClientTransport.create(host, port))
                     .awaitFirstOrNull()
         }.getOrElse {
             logger.error("Cannot connect to $host:$port: ${it.message}")
