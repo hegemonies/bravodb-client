@@ -1,14 +1,18 @@
 package org.bravo.bravodb.server
 
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.apache.logging.log4j.LogManager
 import org.bravo.bravodb.data.storage.InstanceStorage
+import org.bravo.bravodb.data.storage.model.InstanceInfo
 import org.bravo.bravodb.server.server.Server
 import org.bravo.bravodb.server.server.config.ServerDiscoveryConfig
 
@@ -20,7 +24,7 @@ class Discovery(
     private suspend fun schedulePrintStorageState() {
         GlobalScope.launch {
             while (true) {
-                delay(10 * 1000) // 10 sec
+                delay(10_000) // 10 sec
                 var acc = ""
                 val list = InstanceStorage.findAll()
                 list.forEach {
@@ -31,57 +35,48 @@ class Discovery(
         }
     }
 
-    fun start(configOtherServerDiscovery: ServerDiscoveryConfig) {
-        runBlocking {
+    suspend fun start(configOtherServerDiscovery: ServerDiscoveryConfig?) {
+        runCatching {
+            logger.info("Discovery starts")
+
             schedulePrintStorageState()
-            runCatching {
-                InstanceStorage.setSelfInstanceInfo(serverDiscoveryConfig.host, serverDiscoveryConfig.port)
-                logger.info("Discovery start")
 
-                if (serverDiscoveryConfig::class.java != configOtherServerDiscovery::class.java) {
-                    logger.error(
-                        "Type of server config and other known server config not equal:" +
-                            " ${serverDiscoveryConfig::class.java} != ${configOtherServerDiscovery::class.java}"
-                    )
-                    return@runBlocking
-                }
+            InstanceStorage.setSelfInstanceInfo(serverDiscoveryConfig.host, serverDiscoveryConfig.port)
 
-                bootstrapServer()
+            bootstrapServer(serverDiscoveryConfig.port)
 
-                runCatching {
-                    if (configOtherServerDiscovery.host != serverDiscoveryConfig.host) {
-                        saveAndFirstRegistration(configOtherServerDiscovery)
-                    } else if (configOtherServerDiscovery.port != serverDiscoveryConfig.port) {
-                        saveAndFirstRegistration(configOtherServerDiscovery)
-                    } else {
-                        logger.warn(
-                            "Doesn't save other instance ${configOtherServerDiscovery.host}:${configOtherServerDiscovery.port}"
-                        )
-                    }
-                }.getOrElse {
-                    logger.error("Cannot first registration because  ${it.message}")
-                }
+            firstRegistrationIfNeed(configOtherServerDiscovery)
 
-                scheduleReregistration()
-            }.getOrElse {
-                logger.error("Restart discovery server because ${it.message}")
-                start(configOtherServerDiscovery)
-            }
+            scheduleReregistration()
+        }.getOrElse {
+            logger.error("Restart discovery server because ${it.message}")
+            start(configOtherServerDiscovery)
         }
     }
 
-    fun start() {
-        runCatching {
-            runBlocking {
-                logger.info("Discovery start")
-                schedulePrintStorageState()
-                InstanceStorage.setSelfInstanceInfo(serverDiscoveryConfig.host, serverDiscoveryConfig.port)
-                bootstrapServer()
-                scheduleReregistration()
+    suspend fun firstRegistrationIfNeed(configOtherServerDiscovery: ServerDiscoveryConfig?) {
+        if (configOtherServerDiscovery != null) {
+            if (serverDiscoveryConfig::class.java != configOtherServerDiscovery::class.java) {
+                logger.error(
+                    "Type of server config and other known server config not equal:" +
+                        " ${serverDiscoveryConfig::class.java} != ${configOtherServerDiscovery::class.java}"
+                )
+                return
             }
-        }.getOrElse {
-            logger.error("Restart discovery server because ${it.message}")
-            start()
+
+            runCatching {
+                if (configOtherServerDiscovery.host != serverDiscoveryConfig.host) {
+                    saveAndFirstRegistration(configOtherServerDiscovery)
+                } else if (configOtherServerDiscovery.port != serverDiscoveryConfig.port) {
+                    saveAndFirstRegistration(configOtherServerDiscovery)
+                } else {
+                    logger.warn(
+                        "Doesn't save other instance ${configOtherServerDiscovery.host}:${configOtherServerDiscovery.port}"
+                    )
+                }
+            }.getOrElse { error ->
+                logger.error("Cannot first registration because ${error.message}")
+            }
         }
     }
 
@@ -95,34 +90,73 @@ class Discovery(
 
     private suspend fun scheduleReregistration() {
         while (true) {
-            delay(15 * 1000) // 15 seconds
+            delay(15_000) // 15 seconds
+
             logger.info("Start re-registration")
+
+            val asyncJobs = mutableListOf<Job>()
+
             for (instance in InstanceStorage.findAll()) {
-                try {
-                    if (instance.client.registration(serverDiscoveryConfig.host, serverDiscoveryConfig.port)) {
-                        logger.info("Reregistration in $instance is successfully")
-                    } else {
-                        logger.error("Reregistration in $instance is bad")
+                val job = GlobalScope.launch {
+                    var counter = 0
+
+                    while (counter < 10) {
+                        if (registration(instance)) {
+                            break
+                        }
+
+                        counter++
+                    }
+
+                    if (counter == 10) {
+                        logger.info("Deleting instance ${instance.host}:${instance.port}")
+
                         if (InstanceStorage.delete(instance)) {
-                            logger.warn("Delete ${instance.host}:${instance.port} is successfully")
+                            logger.info("Delete ${instance.host}:${instance.port} is successfully")
                         } else {
-                            logger.warn("Delete ${instance.host}:${instance.port} is bad")
+                            logger.info("Delete ${instance.host}:${instance.port} is bad")
                         }
                     }
-                } catch(e: Throwable) {
-                    logger.error("Error during reregistration in ${instance.host}:${instance.port}")
+
+                    delay(2000)
                 }
+
+                asyncJobs.add(job)
             }
+
+            asyncJobs.joinAll()
+
             logger.info("Finish re-registration")
+        }
+    }
+
+    private suspend fun registration(instance: InstanceInfo): Boolean {
+        runCatching {
+
+            if (instance.client.registration(serverDiscoveryConfig.host, serverDiscoveryConfig.port)) {
+                logger.info("Reregistration in $instance is successfully")
+
+                return true
+            } else {
+                logger.error("Reregistration in $instance is bad")
+
+                return false
+            }
+        }.getOrElse { error ->
+            logger.error(
+                "Error during reregistration in ${instance.host}:${instance.port} : ${error.message}"
+            )
+
+            return false
         }
     }
 
     /**
      * Start server for to receive registration and to send known hosts
      */
-    private suspend fun bootstrapServer() {
-        logger.info("Start bootstrap server")
-        server.start()
+    private suspend fun bootstrapServer(port: Int) {
+        logger.info("Starting bootstrap server on $port port")
+        server.start(port)
         logger.info("Finish bootstrap server")
     }
 

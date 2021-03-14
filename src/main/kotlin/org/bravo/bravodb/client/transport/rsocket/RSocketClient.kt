@@ -27,8 +27,8 @@ import org.bravo.bravodb.data.transport.Response
 import java.time.Duration
 
 class RSocketClient(
-        override val host: String,
-        override val port: Int
+    override val host: String,
+    override val port: Int
 ) : Client {
 
     private var client: RSocket? = null
@@ -57,15 +57,17 @@ class RSocketClient(
                     client?.dispose()
                 }
             }
+
             client = RSocketConnector.create()
-                    .keepAlive(Duration.ofSeconds(5), Duration.ofSeconds(10))
-                    .payloadDecoder(PayloadDecoder.ZERO_COPY)
-                    .connect(TcpClientTransport.create(host, port))
-                    .awaitFirstOrNull()
-        }.getOrElse {
-            logger.error("Cannot connect to $host:$port: ${it.message}")
+                .keepAlive(Duration.ofSeconds(5), Duration.ofSeconds(10))
+                .payloadDecoder(PayloadDecoder.ZERO_COPY)
+                .connect(TcpClientTransport.create(host, port))
+                .block()
+        }.getOrElse { error ->
+            logger.error("Cannot connect to $host:$port: ${error.message}")
             return false
         }
+
         return client != null
     }
 
@@ -83,52 +85,53 @@ class RSocketClient(
         logger.info("Start registration in $host:$port")
 
         val requestBody = RegistrationRequest(
-                InstanceInfoView(selfHost, selfPort)
+            InstanceInfoView(selfHost, selfPort)
         ).toJson()
         val request = Request(DataType.REGISTRATION_REQUEST, requestBody).toJson()
 
         runCatching {
             client?.requestResponse(DefaultPayload.create(request))
-                    ?.awaitFirstOrNull()
-                    ?.also { payload ->
-                        logger.info("Received response: ${payload.dataUtf8}")
-                        val response = fromJson<Response>(payload.dataUtf8)
+                ?.awaitFirstOrNull()
+                ?.also { payload ->
+                    logger.info("Received response: ${payload.dataUtf8}")
+                    val response = fromJson<Response>(payload.dataUtf8)
 
-                        if (response.answer.statusCode == AnswerStatus.OK) {
-                            response.body ?: let {
-                                logger.error("Response body is null")
-                                return false
-                            }
-
-                            fromJson<RegistrationResponse>(response.body).also { resp ->
-                                if (resp.otherInstances.count() > 0) {
-                                    resp.otherInstances.forEach { instanceInfo ->
-                                        GlobalScope.launch {
-                                            if (!InstanceStorage.save(instanceInfo.host, instanceInfo.port)) {
-                                                logger.info(
-                                                        "Cannot adding instance info ${instanceInfo.host}:${instanceInfo.port}" +
-                                                                " in storage because it already exists"
-                                                )
-                                            }
-                                        }.start()
-                                    }
-                                } else {
-                                    logger.info("Received 0 other instances")
-                                }
-                            }
-                        } else {
-                            logger.error("Receive error status on self registration")
+                    if (response.answer.statusCode == AnswerStatus.OK) {
+                        response.body ?: let {
+                            logger.error("Response body is null")
                             return false
                         }
 
-                        logger.info("Response on self registration: ${payload.dataUtf8}")
-                    }
-                    ?: also {
-                        logger.error("Error registration")
+                        fromJson<RegistrationResponse>(response.body).also { resp ->
+                            if (resp.otherInstances.count() > 0) {
+                                resp.otherInstances.forEach { instanceInfo ->
+                                    GlobalScope.launch {
+                                        if (!InstanceStorage.save(instanceInfo.host, instanceInfo.port)) {
+                                            logger.info(
+                                                "Cannot adding instance info ${instanceInfo.host}:${instanceInfo.port}" +
+                                                    " in storage because it already exists"
+                                            )
+                                        }
+                                    }.start()
+                                }
+                            } else {
+                                logger.info("Received 0 other instances")
+                            }
+                        }
+                    } else {
+                        logger.error("Receive error status on self registration")
                         return false
                     }
-        }.getOrElse {
-            logger.error("Cannot do request-response: ${it.message}")
+
+                    logger.info("Response on self registration: ${payload.dataUtf8}")
+                }
+                ?: also {
+                    logger.error("Error registration")
+                    return false
+                }
+        }.getOrElse { error ->
+            connect()
+            logger.error("Cannot do request-response: $error")
             InstanceStorage.delete(InstanceInfoView(host, port))
         }
         return true
@@ -139,12 +142,12 @@ class RSocketClient(
         val request = Request(DataType.PUT_DATA, requestBody).toJson()
 
         val payload = client?.requestResponse(DefaultPayload.create(request))
-                ?.awaitFirstOrNull()
-                ?.dataUtf8
-                ?: run {
-                    logger.error("Cannot send data to $host:$port: client not connection")
-                    return false
-                }
+            ?.awaitFirstOrNull()
+            ?.dataUtf8
+            ?: run {
+                logger.error("Cannot send data to $host:$port: client not connection")
+                return false
+            }
 
         val response = fromJson<Response>(payload)
 
@@ -165,11 +168,11 @@ class RSocketClient(
         val request = Request(DataType.GET_DATA, requestBody).toJson()
 
         val payload = client?.requestResponse(DefaultPayload.create(request))
-                ?.awaitFirstOrNull()
-                ?: run {
-                    logger.error("Cannot get data from $host:$port")
-                    return null
-                }
+            ?.awaitFirstOrNull()
+            ?: run {
+                logger.error("Cannot get data from $host:$port")
+                return null
+            }
 
         val response = fromJson<Response>(payload.dataUtf8)
 
@@ -197,12 +200,12 @@ class RSocketClient(
         val request = Request(DataType.REPLICATION_DATA, requestBody).toJson()
 
         val payload = client?.requestResponse(DefaultPayload.create(request))
-                ?.awaitFirstOrNull()
-                ?.dataUtf8
-                ?: run {
-                    logger.error("Cannot send data to $host:$port: client not connection")
-                    return false
-                }
+            ?.awaitFirstOrNull()
+            ?.dataUtf8
+            ?: run {
+                logger.error("Cannot send data to $host:$port: client not connection")
+                return false
+            }
 
         val response = fromJson<Response>(payload)
 

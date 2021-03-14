@@ -11,10 +11,7 @@ import reactor.core.publisher.Mono
 
 class RSocketServerDiscovery : ServerDiscoveryTransport {
 
-    override var port: Int = DefaultDiscoveryConnectInfo.PORT
-    override var host: String = DefaultDiscoveryConnectInfo.HOST
-
-    override suspend fun start() {
+    override suspend fun start(port: Int) {
         runCatching {
             RSocketServer.create(this::receiveHandler)
                 .bindNow(TcpServerTransport.create(port))
@@ -27,8 +24,8 @@ class RSocketServerDiscovery : ServerDiscoveryTransport {
             // ?.onClose()
             // ?.awaitFirstOrNull()
             // ?: logger.error("Error starting RSocket discovery server")
-        }.getOrElse {
-            logger.error("Error during run RSocket server because ${it.message}")
+        }.getOrElse { error ->
+            logger.error("Error during run RSocket server because ${error.message}")
         }
     }
 
